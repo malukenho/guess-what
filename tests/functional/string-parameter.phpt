@@ -15,7 +15,7 @@ class StringParameter
     }
 }
 
-$params = (new GuessWhat\Injector(new \ReflectionMethod(StringParameter::class, 'foo')))
+$params = (new GuessWhat\MyParametersAre(new \ReflectionMethod(StringParameter::class, 'foo')))
     ->__invoke();
 
 var_dump(is_int($params[0]));

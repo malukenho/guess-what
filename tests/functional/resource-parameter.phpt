@@ -15,7 +15,7 @@ class ResourceParameter
     }
 }
 
-$params = (new GuessWhat\Injector(new \ReflectionMethod(ResourceParameter::class, 'foo')))
+$params = (new GuessWhat\MyParametersAre(new \ReflectionMethod(ResourceParameter::class, 'foo')))
     ->__invoke();
 
 var_dump(is_int($params[0]));

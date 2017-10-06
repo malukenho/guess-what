@@ -15,7 +15,7 @@ class FloatParameter
     }
 }
 
-$params = (new GuessWhat\Injector(new \ReflectionMethod(FloatParameter::class, 'foo')))
+$params = (new GuessWhat\MyParametersAre(new \ReflectionMethod(FloatParameter::class, 'foo')))
     ->__invoke();
 
 var_dump(is_int($params[0]));

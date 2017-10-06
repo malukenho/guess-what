@@ -15,7 +15,7 @@ class BooleanParameter
     }
 }
 
-$params = (new GuessWhat\Injector(new \ReflectionMethod(BooleanParameter::class, 'foo')))
+$params = (new GuessWhat\MyParametersAre(new \ReflectionMethod(BooleanParameter::class, 'foo')))
     ->__invoke();
 
 var_dump(is_int($params[0]));
