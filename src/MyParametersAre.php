@@ -4,22 +4,10 @@ declare(strict_types=1);
 
 namespace GuessWhat;
 
-use GuessWhat\ParameterResolver\BoolParameter;
-use GuessWhat\ParameterResolver\FloatParameter;
-use GuessWhat\ParameterResolver\IntegerParameter;
-use GuessWhat\ParameterResolver\StringParameter;
 use ReflectionMethod;
 
-class Injector implements InjectorInterface
+class MyParametersAre implements GuesserInterface
 {
-    // @todo move it to the interface?
-    private const TYPE_RESOLVER = [
-        IntegerParameter::class,
-        StringParameter::class,
-        BoolParameter::class,
-        FloatParameter::class,
-    ];
-
     /**
      * @var ReflectionMethod
      */
@@ -37,6 +25,8 @@ class Injector implements InjectorInterface
 
         foreach ($params as $param) {
             foreach (self::TYPE_RESOLVER as $resolver) {
+                // @todo instantiate the list previously
+                // @todo probably a chain...
                 $a = new $resolver;
                 if ($a->canResolve($param)) {
                     $list[] = $a->generateValue();
