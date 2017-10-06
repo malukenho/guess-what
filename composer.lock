@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3a64ef58badb6413259a95fba5d4c53",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "f929c50bec57cfacf46ce29b16c6ce5b",
+    "packages": [
         {
             "name": "doctrine/instantiator",
             "version": "1.1.0",
@@ -60,7 +59,9 @@
                 "instantiate"
             ],
             "time": "2017-07-22T11:58:36+00:00"
-        },
+        }
+    ],
+    "packages-dev": [
         {
             "name": "myclabs/deep-copy",
             "version": "1.6.1",
