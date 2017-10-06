@@ -12,9 +12,9 @@
         syntaxCheck="true"
         columns="max"
 >
-    <!--<testsuite name="GuessWhat tests">-->
-        <!--<directory>./tests/unit</directory>-->
-    <!--</testsuite>-->
+    <testsuite name="GuessWhat unit tests">
+        <directory>./tests/unit</directory>
+    </testsuite>
     <testsuite name="GuessWhat functional tests">
         <directory suffix=".phpt">./tests/functional</directory>
     </testsuite>
