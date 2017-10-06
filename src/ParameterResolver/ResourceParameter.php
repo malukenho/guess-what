@@ -6,15 +6,14 @@ namespace GuessWhat\ParameterResolver;
 
 use ReflectionParameter;
 
-// @todo implement it
 final class ResourceParameter implements ParameterResolverInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function generateValue(): bool
+    public function generateValue()
     {
-        return random_int(0, 1) === 0;
+        return tmpfile();
     }
 
     /**
@@ -22,6 +21,6 @@ final class ResourceParameter implements ParameterResolverInterface
      */
     public function canResolve(ReflectionParameter $parameter): bool
     {
-        return in_array($parameter->getType()->getName(), ['bool', 'boolean'], true);
+        return 'resource' === $parameter->getType()->getName();
     }
 }
