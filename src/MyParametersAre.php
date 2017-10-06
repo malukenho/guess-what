@@ -29,7 +29,7 @@ class MyParametersAre implements GuesserInterface
         $this->resolvers = array_merge($this->instantiateDefaultResolvers(self::TYPE_RESOLVER), (array) $additionalResolvers);
     }
 
-    private function instantiateDefaultResolvers(array $defaultResolvers)
+    private function instantiateDefaultResolvers(string ...$defaultResolvers)
     {
         $instantiator = new Instantiator();
 
