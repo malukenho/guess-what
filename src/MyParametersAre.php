@@ -26,7 +26,7 @@ class MyParametersAre implements GuesserInterface
         ?ParameterResolverInterface ...$additionalResolvers
     ) {
         $this->reflectionMethod = $reflectionMethod;
-        $this->resolvers = array_merge($this->instantiateDefaultResolvers(self::TYPE_RESOLVER), (array) $additionalResolvers);
+        $this->resolvers = array_merge($this->instantiateDefaultResolvers(...self::TYPE_RESOLVER), (array) $additionalResolvers);
     }
 
     private function instantiateDefaultResolvers(string ...$defaultResolvers)
