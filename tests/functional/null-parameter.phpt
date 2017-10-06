@@ -11,16 +11,18 @@ class NullParameter
 {
     public function foo($nullable = null): void
     {
-        var_dump($nullable);
+        return;
     }
 }
 
-(new GuessWhat\MyParametersAre(new \ReflectionMethod(NullParameter::class, 'foo')))
+$params = (new GuessWhat\MyParametersAre(new \ReflectionMethod(NullParameter::class, 'foo')))
     ->__invoke();
 
+var_dump($params[0]);
+var_dump(is_null($params[0]));
+var_dump(null === $params[0]);
 ?>
 --EXPECTF--
-bool(false)
-bool(false)
-bool(false)
+NULL
+bool(true)
 bool(true)
