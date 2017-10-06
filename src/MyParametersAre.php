@@ -21,17 +21,18 @@ class MyParametersAre implements GuesserInterface
 
     public function __invoke(): array
     {
-        $parameters = $this->reflectionMethod->getParameters();
-
-        return array_map(function (ReflectionParameter $parameter) {
-            foreach (self::TYPE_RESOLVER as $resolver) {
-                // @todo instantiate the list previously
-                // @todo probably a chain...
-                $a = new $resolver;
-                if ($a->canResolve($parameter)) {
-                    return $a->generateValue();
+        return array_map(
+            function (ReflectionParameter $parameter) {
+                foreach (self::TYPE_RESOLVER as $resolver) {
+                    // @todo instantiate the list previously
+                    // @todo probably a chain...
+                    $a = new $resolver;
+                    if ($a->canResolve($parameter)) {
+                        return $a->generateValue();
+                    }
                 }
-            }
-        }, $parameters);
+            },
+            $this->reflectionMethod->getParameters()
+        );
     }
 }
