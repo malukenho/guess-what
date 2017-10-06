@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GuessWhat;
 
 use ReflectionMethod;
+use ReflectionParameter;
 
 class MyParametersAre implements GuesserInterface
 {
@@ -20,20 +21,17 @@ class MyParametersAre implements GuesserInterface
 
     public function __invoke(): array
     {
-        $list = [];
-        $params = $this->reflectionMethod->getParameters();
+        $parameters = $this->reflectionMethod->getParameters();
 
-        foreach ($params as $param) {
+        return array_map(function (ReflectionParameter $parameter) {
             foreach (self::TYPE_RESOLVER as $resolver) {
                 // @todo instantiate the list previously
                 // @todo probably a chain...
                 $a = new $resolver;
-                if ($a->canResolve($param)) {
-                    $list[] = $a->generateValue();
+                if ($a->canResolve($parameter)) {
+                    return $a->generateValue();
                 }
             }
-        }
-
-        return $list;
+        }, $parameters);
     }
 }
